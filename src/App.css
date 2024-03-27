@@ -1,0 +1,36 @@
+.login-button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+
+.nav-section {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-list {
+    display: flex;
+    list-style-type: none;
+}
+
+.menu-list li {
+    padding: 10px;
+}
+
+.menu-area {
+    display: flex;
+    justify-content: center;
+}
+
+.search-area {
+    display: flex;
+    height: 1.5em;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.search-input {
+    border: none;
+    margin: 5px;
+}
