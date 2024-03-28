@@ -2,6 +2,7 @@
     display: flex;
     justify-content: flex-end;
     margin: 20px;
+    cursor: pointer;
 }
 
 .nav-section {
@@ -33,4 +34,28 @@
 .search-input {
     border: none;
     margin: 5px;
+}
+
+.card-area:hover {
+    transform: scale(1.05) 
+}
+
+.product-img {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.product-add-button {
+    width: 100%;
+}
+
+.choice-area {
+    font-weight: 200;
+}
+
+#dropdown-basic-button {
+    background-color: #fff;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

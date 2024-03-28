@@ -1,9 +1,12 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import ProductAll from './page/ProductAll'
 import Login from './page/Login'
 import ProductDetail from './page/ProductDetail'
 import Navbar from './component/Navbar';
+import { useEffect, useState } from 'react';
+import PrivateRoute from './route/PrivateRoute';
 
 // 1. 전체 상품 페이지, 로그인, 상품  상세페이지
 // 1-1. 네비게이션바에서 메뉴를 선택할 수 있다.
@@ -16,14 +19,19 @@ import Navbar from './component/Navbar';
 // 8. 로그인을 하면 로그아웃이 보이고, 로그아웃을 하면 로그인이 보인다.
 // 9. 상품을 검색할 수 있다.
 function App() {
+  const [authenticate, setAuthenticate] = useState(false) // false = login X / true = login O
+  
+  useEffect(()=>{
+    console.log("로그인여부", authenticate)
+  },[authenticate])
   return (
     <div>
       {/* 네비게이션 바는 페이지 변경과 상관없이 항상 표시되어야 함 */}
       <Navbar />
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/products/:id" element={<ProductDetail/>} />
+        <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>} />
+        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} />} />
       </Routes>
     </div>
   );
