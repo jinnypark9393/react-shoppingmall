@@ -40,6 +40,9 @@
     transform: scale(1.05) 
 }
 
+.card-area img {
+    width: 100%;
+}
 .product-img {
     display: flex;
     justify-content: flex-end;
