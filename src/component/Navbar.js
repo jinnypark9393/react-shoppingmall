@@ -19,6 +19,17 @@ const Navbar = () => {
   const goToLogin = () => {
     navigate("/login")
   }
+
+  const search = (event) => {
+    // console.log("key press event")
+    if (event.key === "Enter") {
+      // console.log("we clicked: ", event.key)
+      let keyword = event.target.value
+      // console.log("keyword: ", keyword)
+      // 입력한 검색어 읽어서 URL 바꿔주기
+      navigate(`/?q=${keyword}`)
+    }
+  }
   return (
     <div>
       <div>
@@ -41,7 +52,8 @@ const Navbar = () => {
         </ul>
         <div className="search-area">
             <FontAwesomeIcon icon={faSearch} />
-            <input className="search-input" type="text" placeholder="제품 검색" />
+            {/* onKeyPress: 아무 키 입력하면 이벤트 발생(alt,ctrl,shift,esc제외) */}
+            <input className="search-input" type="text" placeholder="제품 검색" onKeyPress={(event)=>search(event)} />
         </div>
       </div>
     </div>

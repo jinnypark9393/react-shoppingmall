@@ -6,7 +6,10 @@ const ProductDetail = () => {
   let { id } = useParams();
   const [product, setProduct] = useState(null);
   const getProductDetail = async () => {
-    let url = `http://localhost:5000/products/${id}`;
+    // local 용 주소
+    // let url = `http://localhost:5000/products/${id}`;
+    // 배포용 주소
+    let url = `https://my-json-server.typicode.com/jinnypark9393/react-shoppingmall/products/${id}`;
     let response = await fetch(url);
     let data = await response.json();
     // console.log(data)
