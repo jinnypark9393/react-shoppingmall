@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
   const menuList = [
     "여성",
     "Divided",
@@ -14,34 +14,61 @@ const Navbar = () => {
     "Sale",
     "지속가능성",
   ];
+  // sideNav 표시/비표시를 위한 상태값 설정
+  let [width, setWidth] = useState(0)
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const goToLogin = () => {
-    navigate("/login")
-  }
+    if (authenticate == true) {
+      navigate("/");
+      setAuthenticate(false);
+    } else {
+      navigate("/login");
+    }
+  };
+  const goToMain = () => {
+    navigate("/");
+  };
 
   const search = (event) => {
     // console.log("key press event")
     if (event.key === "Enter") {
       // console.log("we clicked: ", event.key)
-      let keyword = event.target.value
+      let keyword = event.target.value;
       // console.log("keyword: ", keyword)
       // 입력한 검색어 읽어서 URL 바꿔주기
-      navigate(`/?q=${keyword}`)
+      navigate(`/?q=${keyword}`);
     }
-  }
+  };
   return (
     <div>
       <div>
-        <div className="login-button" onClick={goToLogin}>
-          <FontAwesomeIcon icon={faUser} />
-          <div>Login</div>
+        <div className="first-line">
+          <div className="side-menu" style={{ width: width }}>
+            <button className="close-btn" onClick={() => setWidth(0)}>&times;</button>
+            <div className="side-menu-list">
+              {menuList.map((menu, index) => (
+                <li>{menu}</li>
+              ))}
+            </div>
+          </div>
+          <div className="menu-button-mobile" onClick={() => setWidth(250)}>
+            <FontAwesomeIcon icon={faBars} />
+          </div>
+          <div className="login-button" onClick={goToLogin}>
+            <FontAwesomeIcon icon={faUser} />
+            <div className="login-text">
+              {authenticate == true ? "Logout" : "Login"}
+            </div>
+          </div>
         </div>
       </div>
       <div className="nav-section">
         <img
           width={100}
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/709px-H%26M-Logo.svg.png"
+          onClick={goToMain}
+          className="logo-image"
         />
       </div>
       <div className="menu-area">
@@ -51,9 +78,14 @@ const Navbar = () => {
           ))}
         </ul>
         <div className="search-area">
-            <FontAwesomeIcon icon={faSearch} />
-            {/* onKeyPress: 아무 키 입력하면 이벤트 발생(alt,ctrl,shift,esc제외) */}
-            <input className="search-input" type="text" placeholder="제품 검색" onKeyPress={(event)=>search(event)} />
+          <FontAwesomeIcon icon={faSearch} />
+          {/* onKeyPress: 아무 키 입력하면 이벤트 발생(alt,ctrl,shift,esc제외) */}
+          <input
+            className="search-input"
+            type="text"
+            placeholder="제품 검색"
+            onKeyPress={(event) => search(event)}
+          />
         </div>
       </div>
     </div>

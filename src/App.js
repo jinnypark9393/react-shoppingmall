@@ -27,7 +27,7 @@ function App() {
   return (
     <div>
       {/* 네비게이션 바는 페이지 변경과 상관없이 항상 표시되어야 함 */}
-      <Navbar />
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
         <Route path="/" element={<ProductAll />} />
         <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>} />

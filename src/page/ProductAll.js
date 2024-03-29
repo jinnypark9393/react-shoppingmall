@@ -10,7 +10,7 @@ const ProductAll = () => {
 
   const getProducts = async () => {
     let searchQuery = query.get('q') || "" // q로 시작하는 쿼리
-    console.log("query: ", searchQuery)
+    // console.log("query: ", searchQuery)
     // q로 검색 가능한 것은 json-server에서 제공해주는 기능
     // local용 url
     // let url = `http://localhost:5000/products?q=${searchQuery}`

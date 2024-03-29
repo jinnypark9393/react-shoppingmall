@@ -1,43 +1,63 @@
-.login-button {
+.first-line {
     display: flex;
     justify-content: flex-end;
+}
+
+.login-button {
+    display: flex;
+    align-items: center;
     margin: 20px;
     cursor: pointer;
+}
+
+.login-text {
+    margin-left: 3px;
 }
 
 .nav-section {
     display: flex;
     justify-content: center;
+    margin-bottom: 15px;
 }
 
 .menu-list {
     display: flex;
     list-style-type: none;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 10px;
 }
 
 .menu-list li {
     padding: 10px;
+    cursor: pointer;
 }
 
 .menu-area {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .search-area {
     display: flex;
     height: 1.5em;
     align-items: center;
-    border-bottom: 1px solid black;
 }
 
 .search-input {
     border: none;
     margin: 5px;
+    border-bottom: 1px solid black;
+}
+
+.card-area {
+    margin: 15px;
 }
 
 .card-area:hover {
-    transform: scale(1.05) 
+    transform: scale(1.03);
+    transition: 0.5s; 
 }
 
 .card-area img {
@@ -62,3 +82,71 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.logo-image {
+    margin: 10px;
+}
+
+.logo-image:hover {
+    cursor: pointer;
+}
+
+.second-line { 
+    display: flex;
+    width: 100%;
+}
+
+.menu-button-mobile {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .first-line {
+        display: flex;
+        justify-content: space-between;
+    }
+    .menu-area {
+        display: none;
+    }
+    .menu-button-mobile {
+        display: flex;
+        margin: 20px;
+        
+    }
+}
+
+.side-menu {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: burlywood;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index:2
+  }
+
+  .side-menu-list {
+    list-style-type: none;
+    margin: 15px;
+  }
+  .side-menu-list li {
+    margin: 15px;
+    border: none;
+    background: none;
+    width: 120px;
+    cursor: pointer;
+  }
+  
+  .side-menu .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    border: none;
+    background: none;
+  }
