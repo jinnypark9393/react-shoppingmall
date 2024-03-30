@@ -68,6 +68,10 @@
     justify-content: flex-end;
 }
 
+.product-img img {
+    width: 100%;
+}
+
 .product-add-button {
     width: 100%;
 }

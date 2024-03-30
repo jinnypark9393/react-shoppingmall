@@ -23,10 +23,10 @@ const ProductDetail = () => {
     // 2. 레이아웃이 크게 2개로 나뉨: layout(row, col)
     <Container>
       <Row>
-        <Col className="product-img">
+        <Col className="product-img" sm={12} md={6}>
           <img src={product?.img} />
         </Col>
-        <Col>
+        <Col sm={12} md={6}>
           <h2>{product?.title}</h2>
           <h4>₩{product?.price}</h4>
           <div className="choice-area">{product?.choice == true ? "Concious choice" : ""}</div>
