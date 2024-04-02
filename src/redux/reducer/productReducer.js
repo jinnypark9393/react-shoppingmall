@@ -1,5 +1,6 @@
 let initialState = {
-    productList: []
+    productList: [],
+    selectedItem: null,
 }
 
 function productReducer (state, action) {
@@ -7,6 +8,8 @@ function productReducer (state, action) {
     switch(type) {
         case "GET_PRODUCT_SUCCESS":
             return {...state, productList: payload.data}
+        case "GET_DETAIL_PRODUCT_SUCCESS":
+            return {...state, selectedItem: payload.data}
         default:
             return {...state}
     }

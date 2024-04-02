@@ -19,19 +19,22 @@ import PrivateRoute from './route/PrivateRoute';
 // 8. 로그인을 하면 로그아웃이 보이고, 로그아웃을 하면 로그인이 보인다.
 // 9. 상품을 검색할 수 있다.
 function App() {
-  const [authenticate, setAuthenticate] = useState(false) // false = login X / true = login O
+  // const [authenticate, setAuthenticate] = useState(false) // false = login X / true = login O
   
-  useEffect(()=>{
-    console.log("로그인여부", authenticate)
-  },[authenticate])
+  // useEffect(()=>{
+  //   console.log("로그인여부", authenticate)
+  // },[authenticate])
   return (
     <div>
       {/* 네비게이션 바는 페이지 변경과 상관없이 항상 표시되어야 함 */}
-      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
+      {/* <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>} />
-        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} />} />
+        {/* <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>} /> */}
+        <Route path="/login" element={<Login />} />
+        {/* <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} />} /> */}
+        <Route path="/product/:id" element={<PrivateRoute />} />
       </Routes>
     </div>
   );

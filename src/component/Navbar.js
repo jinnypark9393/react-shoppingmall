@@ -3,8 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { authenticateAction } from '../redux/actions/authenticateAction'
 
-const Navbar = ({ authenticate, setAuthenticate }) => {
+// const Navbar = ({ authenticate, setAuthenticate }) => {
+const Navbar = () => {
   const menuList = [
     "여성",
     "Divided",
@@ -17,11 +20,16 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   // sideNav 표시/비표시를 위한 상태값 설정
   let [width, setWidth] = useState(0)
 
+  const authenticate = useSelector((state) => state.auth.authenticate)
+  const id = useSelector((state) => state.auth.id)
+  const password = useSelector((state) => state.auth.password)
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const goToLogin = () => {
     if (authenticate == true) {
       navigate("/");
-      setAuthenticate(false);
+      // setAuthenticate(false);
+      dispatch(authenticateAction.logout(id,password))
     } else {
       navigate("/login");
     }
