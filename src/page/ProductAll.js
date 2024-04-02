@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../component/ProductCard'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useSearchParams } from 'react-router-dom'
-import { productAction } from '../redux/actions/productAction'
+// import { productAction } from '../redux/actions/productAction'
 import { useDispatch, useSelector } from 'react-redux'
+import { fetchProducts } from '../redux/reducer/productReducer'
 
 const ProductAll = () => {
   const productList = useSelector((state) => state.product.productList)
@@ -14,7 +15,7 @@ const ProductAll = () => {
 
   const getProducts = () => {
     let searchQuery = query.get('q') || "" // q로 시작하는 쿼리
-    console.log("query: ", searchQuery)
+    // console.log("query: ", searchQuery)
     // q로 검색 가능한 것은 json-server에서 제공해주는 기능
     // local용 url
     // let url = `http://localhost:5000/products?q=${searchQuery}`
@@ -26,7 +27,9 @@ const ProductAll = () => {
     // // console.log("data", data)
     // setProductList(data)
     // 바로 reducer로 가지 않고 productAction에서 생성한 함수로 가게 됨
-    dispatch(productAction.getProducts(searchQuery))
+    // dispatch(productAction.getProducts(searchQuery))
+    // createAsyncThunk 활용
+    dispatch(fetchProducts(searchQuery))
   }
   // 시작할때 한 번만 실행됨
   useEffect(()=> {

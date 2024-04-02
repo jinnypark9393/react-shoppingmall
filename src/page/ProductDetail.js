@@ -3,6 +3,7 @@ import { Container, Row, Col, Button, Dropdown, DropdownButton } from "react-boo
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { productAction } from "../redux/actions/productAction";
+import { fetchSingleProduct } from '../redux/reducer/productReducer'
 
 const ProductDetail = () => {
   let { id } = useParams();
@@ -15,7 +16,9 @@ const ProductDetail = () => {
     // let data = await response.json();
     // // console.log(data)
     // setProduct(data);
-    dispatch(productAction.getProductDetail(id))
+    // dispatch(productAction.getProductDetail(id))
+    // createAsyncThunk 활용
+    dispatch(fetchSingleProduct(id))
   };
   useEffect(() => {
     getProductDetail();
