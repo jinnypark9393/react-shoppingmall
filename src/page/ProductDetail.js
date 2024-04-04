@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Dropdown, DropdownButton } from "react-boo
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { productAction } from "../redux/actions/productAction";
-import { fetchSingleProduct } from '../redux/reducer/productReducer'
+import { fetchSingleProduct } from '../redux/reducer/productSlice'
 
 const ProductDetail = () => {
   let { id } = useParams();

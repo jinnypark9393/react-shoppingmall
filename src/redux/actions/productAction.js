@@ -1,4 +1,4 @@
-import { productActions } from "../reducer/productReducer"
+// import { productActions } from "../reducer/productReducer"
 
 // 미들웨어 작성 (바로 reducer로 가지 않고 중간에 이 productAction을 거치게 됨)
 // searchQuery의 값을 ProductAll에서 argument로 받아서 사용
